@@ -5,24 +5,18 @@
 
 class TStoneWeight
 {
-public:
-    TStoneWeight(double M_FUNTY, int M_KAMIENIE) : masaWFuntach(M_FUNTY), masaWKamieniach(M_KAMIENIE)
-    {
-        masaWKamieniach = M_FUNTY / funtyNaKamien;
-        resztaWFuntach = M_FUNTY - masaWKamieniach * funtyNaKamien;
-    };
-    TStoneWeight(double M_FUNTY);
-
-    void pokazMaseWFuntach();
-    void pokazMaseWKamieniach();
-
-private:
-    const int funtyNaKamien = 14;
-    const double kgNaKamien = 6.3;
-
-    int masaWKamieniach;
+    const int iloscFuntowNaKamien = 14;
+    int iloscKamieni;
     double resztaWFuntach;
     double masaWFuntach;
+
+public:
+    TStoneWeight() : iloscKamieni(0), resztaWFuntach(0), masaWFuntach(0){};
+    TStoneWeight(double N_FUNTOW);
+    TStoneWeight(double N_FUNTOW, int N_KAMIENI);
+
+    void pokazMaseWKamieniach();
+    void pokazMaseWFuntach();
 };
 
 #endif

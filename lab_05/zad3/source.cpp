@@ -1,19 +1,26 @@
 #include <iostream>
 #include "header.h"
 
-TStoneWeight::TStoneWeight(double M_FUNTY) : masaWFuntach(M_FUNTY), masaWKamieniach(0)
+TStoneWeight::TStoneWeight(double N_FUNTOW)
 {
-    masaWKamieniach = M_FUNTY / funtyNaKamien;
-    resztaWFuntach = M_FUNTY - masaWKamieniach * funtyNaKamien;
-};
-
-void TStoneWeight::pokazMaseWFuntach()
+    iloscKamieni = N_FUNTOW / iloscFuntowNaKamien;
+    resztaWFuntach = N_FUNTOW - iloscKamieni * iloscFuntowNaKamien;
+    masaWFuntach = iloscKamieni * iloscFuntowNaKamien + resztaWFuntach;
+}
+TStoneWeight::TStoneWeight(double N_FUNTOW, int N_KAMIENI)
 {
-    std::cout << "Masa w funtach: " << masaWFuntach << std::endl;
+    iloscKamieni = N_FUNTOW / iloscFuntowNaKamien;
+    resztaWFuntach = N_FUNTOW - iloscKamieni * iloscFuntowNaKamien;
+    iloscKamieni += N_KAMIENI;
+    masaWFuntach = iloscKamieni * iloscFuntowNaKamien + resztaWFuntach;
 }
 
 void TStoneWeight::pokazMaseWKamieniach()
 {
-    std::cout << "Masa w kamieniach: " << masaWKamieniach << std::endl;
-    std::cout << "Reszta w funtach: " << resztaWFuntach << std::endl;
+    std::cout << "Masa w kamieniach: " << iloscKamieni << std::endl;
+    std::cout << "Reszta w funtach:  " << resztaWFuntach << std::endl;
+}
+void TStoneWeight::pokazMaseWFuntach()
+{
+    std::cout << "Masa w funtach: " << masaWFuntach << std::endl;
 }
