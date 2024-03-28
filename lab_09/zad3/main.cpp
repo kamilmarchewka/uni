@@ -2,44 +2,44 @@
 #include <cmath>
 using namespace std;
 
-class Ksztalt
+template <typename T, int rozmiar>
+class Tablica
 {
 public:
-    virtual void obliczPole() = 0;
-};
+    Tablica(T values[])
+    {
+        elementyWsk = new T[rozmiar];
+        for (int i = 0; i < rozmiar; i++)
+        {
+            elementyWsk[i] = values[i];
+        }
+    };
+    ~Tablica()
+    {
+        delete[] elementyWsk;
+    }
 
-class Kolo : public Ksztalt
-{
-public:
-    Kolo(float R) : r(R) {}
-    void obliczPole() override { cout << "Pole kola: " << M_PI * r * r << endl; }
+    void wypiszEl()
+    {
+        for (int i = 0; i < rozmiar; i++)
+            cout << elementyWsk[i] << endl;
+    }
 
 private:
-    float r;
-};
-
-class Kwadrat : public Ksztalt
-{
-public:
-    Kwadrat(float A) : a(A){};
-    void obliczPole() override { cout << "Pole kwadratu: " << a * a << endl; }
-
-private:
-    float a;
+    T *elementyWsk{nullptr};
 };
 
 int main()
 {
-    Kolo kolo(3);
-    Kwadrat kwadrat(6);
+    int intValues[5] = {1, 4, 3, 2, 6};
+    Tablica<int, 5> tablicaInt(intValues);
 
-    Ksztalt *ksztaltWsk = nullptr;
+    float floatValus[7] = {3.5, 7.86, 2.3, 1.11, 2.9, 4.8876, 2};
+    Tablica<float, 7> tablicaFloat(floatValus);
 
-    ksztaltWsk = &kolo;
-    ksztaltWsk->obliczPole();
-
-    ksztaltWsk = &kwadrat;
-    ksztaltWsk->obliczPole();
+    tablicaInt.wypiszEl();
+    cout << endl;
+    tablicaFloat.wypiszEl();
 
     return 0;
 }
