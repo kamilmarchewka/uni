@@ -5,8 +5,8 @@ using namespace std;
 class Bryla
 {
 public:
-    virtual double polePowierzchni() { return 0; };
-    virtual double objetosc() { return 0; };
+    virtual double polePowierzchni() = 0;
+    virtual double objetosc() = 0;
 
     void wyswietl()
     {
@@ -55,13 +55,13 @@ int main()
 {
     Kula k(10.);
     Prostopadloscian p(2., 3., 6.);
-    Bryla b;
+    // Bryla b;
 
     k.wyswietl();
     cout << endl;
     p.wyswietl();
     cout << endl;
-    b.wyswietl();
+    // b.wyswietl();
 
     return 0;
 }
