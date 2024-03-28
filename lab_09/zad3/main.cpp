@@ -31,10 +31,10 @@ private:
 
 int main()
 {
-    int intValues[5] = {1, 4, 3, 2, 6};
+    int intValues[5]{1, 4, 3, 2, 6};
     Tablica<int, 5> tablicaInt(intValues);
 
-    float floatValus[7] = {3.5, 7.86, 2.3, 1.11, 2.9, 4.8876, 2};
+    float floatValus[7]{3.5, 7.86, 2.3, 1.11, 2.9, 4.8876, 2};
     Tablica<float, 7> tablicaFloat(floatValus);
 
     tablicaInt.wypiszEl();
