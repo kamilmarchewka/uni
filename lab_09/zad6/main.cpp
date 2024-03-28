@@ -2,36 +2,17 @@
 #include <cmath>
 using namespace std;
 
-template <typename T = int>
-class Kula
+template <class T>
+T poleProstopadloscianu(T a, T b, T h)
 {
-public:
-    Kula(T R = 2) : promien(R){};
-
-    T polePowierzchni() { return 4 * M_PI * promien * promien; }
-    T objetosc() { return 4 / 3 * M_PI * pow(promien, 3); }
-    void wypisz()
-    {
-        cout << "Kula:" << endl;
-        cout << "PP: " << polePowierzchni() << endl;
-        cout << "V:   " << objetosc() << endl;
-    }
-
-private:
-    T promien;
-};
+    return (a * b) * 2 + (2 * a + 2 * b) * h;
+}
 
 int main()
 {
-    Kula<> kInt;
-    Kula<float> kFloat(4.32);
-    Kula<double> kDouble(0.321211112042);
-
-    kInt.wypisz();
-    cout << endl;
-    kFloat.wypisz();
-    cout << endl;
-    kDouble.wypisz();
+    cout << "Int: " << poleProstopadloscianu<int>(2, 3, 4) << endl;
+    cout << "float: " << poleProstopadloscianu<float>(2.4, 3.3, 4.2) << endl;
+    cout << "Double: " << poleProstopadloscianu<double>(2.2, 3.02, 0.004) << endl;
 
     return 0;
 }
