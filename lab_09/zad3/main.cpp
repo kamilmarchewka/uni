@@ -31,11 +31,9 @@ private:
 
 int main()
 {
-    int intValues[5]{1, 4, 3, 2, 6};
-    Tablica<int, 5> tablicaInt(intValues);
+    Tablica<int, 5> tablicaInt((int[5]){1, 4, 3, 2, 6});
 
-    float floatValus[7]{3.5, 7.86, 2.3, 1.11, 2.9, 4.8876, 2};
-    Tablica<float, 7> tablicaFloat(floatValus);
+    Tablica<float, 7> tablicaFloat((float[7]){3.5, 7.86, 2.3, 1.11, 2.9, 4.8876, 2});
 
     tablicaInt.wypiszEl();
     cout << endl;
