@@ -1,40 +1,34 @@
 #include <iostream>
-#include <cmath>
+#include <fstream>
 using namespace std;
-
-template <typename T, int rozmiar = 5>
-class Tablica
-{
-public:
-    Tablica(T elementy[])
-    {
-        wsk = new T[rozmiar];
-        for (int i = 0; i < rozmiar; i++)
-        {
-            wsk[i] = elementy[i];
-        }
-    };
-    ~Tablica()
-    {
-        delete[] wsk;
-    };
-    T sumaEl()
-    {
-        T suma = 0;
-        for (int i = 0; i < rozmiar; i++)
-            suma += wsk[i];
-
-        return suma;
-    };
-
-private:
-    T *wsk{nullptr};
-};
 
 int main()
 {
-    Tablica<float, 3> liczby((float[3]){2.3, 3.008, 0.2});
-    cout << liczby.sumaEl() << endl;
+    string plikName = "wizytowka.txt";
+    fstream Plik(plikName);
+
+    // Jezeli plik nie dziala
+    if (!Plik.good())
+        cout << plikName << " nie istnieje" << endl;
+
+    string line;
+    while (getline(Plik, line))
+    {
+        // Sprawdzenie czy linia zawiera znak "|"
+        char skipChar = line.find('-');
+        if (skipChar != string::npos) // jezeli find nie znajdzie, to zwraca wartosc npos
+        {
+            // Jezeli znaleziono, przechodzimy do nastepnej linii
+            continue;
+        }
+
+        // Usunięcie "|"
+        line.erase(remove_if(line.begin(), line.end(), [](char c)
+                             { return c == '|'; }),
+                   line.end());
+
+        cout << line << endl;
+    }
 
     return 0;
 }
