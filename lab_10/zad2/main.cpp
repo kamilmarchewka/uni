@@ -7,7 +7,7 @@ int main()
     ifstream Plik;
     Plik.open("dane.txt");
 
-    if (!Plik.is_open())
+    if (!Plik.is_open() || !Plik.good())
         return -1;
 
     string text;
