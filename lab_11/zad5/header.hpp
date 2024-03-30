@@ -4,38 +4,27 @@
 #include <iostream>
 using namespace std;
 
-template <class T>
-class Tablica
+class Osoba
 {
 public:
-    Tablica(T *ARR, T SIZE) : size(SIZE), arr(ARR){};
+    Osoba(string I = "Jan", string N = "Nowak", int W = 29) : imie(I), nazwisko(N), wiek(W){};
 
-    int max();
-    int min();
+    virtual void wypiszDane() const;
 
 private:
-    int size;
-    T *arr;
+    string imie, nazwisko;
+    int wiek;
 };
 
-template <class T>
-int Tablica<T>::max()
+class Kadra : public Osoba
 {
-    int max = arr[0];
-    for (int i = 1; i < size; i++)
-        if (arr[i] > max)
-            max = arr[i];
-    return max;
-}
+public:
+    Kadra(string W, string I = "Piotr", string N = "Kowalski", int Wi = 10) : Osoba(I, N, Wi), wyksztalcenie(W){};
 
-template <class T>
-int Tablica<T>::min()
-{
-    int min = arr[0];
-    for (int i = 1; i < size; i++)
-        if (arr[i] < min)
-            min = arr[i];
-    return min;
-}
+    void wypiszDane() const override;
+
+private:
+    string wyksztalcenie;
+};
 
 #endif

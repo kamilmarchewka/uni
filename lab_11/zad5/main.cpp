@@ -2,12 +2,16 @@
 
 int main()
 {
-    int sampleArr[] = {1, 2, 3, -1, 10};
-    int size = sizeof(sampleArr) / sizeof(sampleArr[0]);
-    Tablica<int> mojaTablica(sampleArr, size);
+    Osoba *osobaPtr{nullptr};
 
-    cout << "Max: " << mojaTablica.max() << endl;
-    cout << "Min: " << mojaTablica.min() << endl;
+    Osoba osoba1;
+    osoba1.wypiszDane();
+
+    Kadra kadra1("wyzsze");
+    kadra1.wypiszDane();
+
+    osobaPtr = &kadra1;
+    osobaPtr->wypiszDane();
 
     return 0;
 }
